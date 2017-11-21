@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <renjin.version>0.8.2117</renjin.version>
+        <renjin.version>0.8.2527</renjin.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
@@ -50,14 +50,14 @@
     </dependencies>
 
     <modules>
-        <module>DBI</module>
-        <module>MonetDB.R</module>
-        <module>RPostgreSQL</module>
-        <module>RMySQL</module>
+        <module>RJDBC</module>
+        <!--<module>MonetDB.R</module>-->
+        <!--<module>RPostgreSQL</module>-->
+        <!--<module>RMySQL</module>-->
         <module>RSQLite</module>
-        <module>ROracle</module>
-        <module>RH2</module>
-        <module>RH2GIS</module>
+        <!--<module>ROracle</module>-->
+        <!--<module>RH2</module>-->
+        <!--<module>RH2GIS</module>-->
     </modules>
 
     <repositories>
@@ -104,6 +104,11 @@
                             <phase>test</phase>
                         </execution>
                     </executions>
+                    <configuration>
+                        <defaultPackages>
+                            <defaultPackage>methods</defaultPackage>
+                        </defaultPackages>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

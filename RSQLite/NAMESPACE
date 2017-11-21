@@ -1,3 +1,4 @@
 import(DBI)
+import(RJDBC)
 importClass(org.sqlite.JDBC)
 exportPattern("^[^\\.]")

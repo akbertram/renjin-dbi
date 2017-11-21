@@ -18,14 +18,14 @@
     <dependencies>
 		<dependency>
 		    <groupId>org.renjin.cran</groupId>
-		    <artifactId>DBI</artifactId>
+		    <artifactId>RJDBC</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
  		<dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.8.7</version>
-        </dependency>
+        <groupId>org.xerial</groupId>
+        <artifactId>sqlite-jdbc</artifactId>
+        <version>3.8.7</version>
+    </dependency>
     </dependencies>
 
     <build>

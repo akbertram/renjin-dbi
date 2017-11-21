@@ -8,13 +8,27 @@
 		<version>0.3.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>DBI</artifactId>
+	<artifactId>RJDBC</artifactId>
 	<packaging>jar</packaging>
 
 	<name>DBI</name>
-	<description>JDBC-based DBI implementation for Renjin</description>
+	<description>Provides access to databases through the JDBC interface</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.renjin.cran</groupId>
+			<artifactId>DBI</artifactId>
+			<version>0.7-b4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.renjin</groupId>
+			<artifactId>gcc-runtime</artifactId>
+			<version>${renjin.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.renjin</groupId>
