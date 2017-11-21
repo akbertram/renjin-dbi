@@ -20,7 +20,6 @@ setClass("SQLiteDriver",
 )
 
 setMethod("initialize", "SQLiteDriver", function(.Object, ...) {
-   cat("SQLinitialize called!")
   .Object@ptr <- import(org.sqlite.JDBC)$new()
   .Object
 })
