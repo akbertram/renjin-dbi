@@ -47,6 +47,12 @@
             <version>${renjin.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.renjin.cran</groupId>
+            <artifactId>testthat</artifactId>
+            <version>1.0.2-renjin-14</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <modules>
