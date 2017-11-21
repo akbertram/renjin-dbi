@@ -1,5 +1,8 @@
+library(methods)
 library(hamcrest)
+library(DBI)
 library(RSQLite)
+library(RJDBC)
 
 test.driver <- function() {
 	drv <- dbDriver("RSQLite")	

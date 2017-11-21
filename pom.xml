@@ -62,7 +62,7 @@
         <!--<module>RMySQL</module>-->
         <module>RSQLite</module>
         <!--<module>ROracle</module>-->
-        <!--<module>RH2</module>-->
+        <module>RH2</module>
         <!--<module>RH2GIS</module>-->
     </modules>
 

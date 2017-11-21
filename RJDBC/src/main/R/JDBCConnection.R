@@ -45,10 +45,11 @@ setMethod("dbSendUpdate",  signature(conn="JDBCConnection", statement="character
 	invisible(TRUE)
 })
 
-setMethod("dbGetQuery", signature(conn="JDBCConnection", statement="character"),  def=function(conn, statement, ...) {
+setMethod("dbGetQuery", signature(conn="JDBCConnection", statement="character"),
+    def=function(conn, statement, ...) {
   r <- dbSendQuery(conn, statement, ...)
   ## Teradata needs this - closing the statement also closes the result set according to Java docs
-  on.exit(.jcall(r@stat, "V", "close"))
+  #on.exit(.jcall(r@stat, "V", "close"))
   fetch(r, -1)
 })
 
@@ -62,6 +63,12 @@ setMethod("dbGetInfo", "JDBCConnection",
 setMethod("dbListResults", "JDBCConnection",
           def = function(conn, ...) { warning("JDBC maintains no list of active results"); NULL }
           )
+
+setMethod("dbIsValid", "JDBCConnection",
+          def = function(dbObj, ...) {
+
+       TRUE
+})
 
 .fetch.result <- function(r) {
   md <- .jcall(r, "Ljava/sql/ResultSetMetaData;", "getMetaData", check=FALSE)
@@ -85,7 +92,9 @@ setMethod("dbExistsTable", "JDBCConnection", def=function(conn, name, ...) {
 			tolower(dbListTables(conn))
 })
 
-setMethod("dbRemoveTable", "JDBCConnection", def=function(conn, name, ...) dbSendUpdate(conn, paste("DROP TABLE", name))==0)
+setMethod("dbRemoveTable", "JDBCConnection", def=function(conn, name, ...)
+    dbSendUpdate(conn, paste("DROP TABLE", name))==0
+)
 
 setMethod("dbListFields", "JDBCConnection", def=function(conn, name, pattern="%", full=FALSE, ...) {
   md <- .jcall(conn@jc, "Ljava/sql/DatabaseMetaData;", "getMetaData", check=FALSE)
