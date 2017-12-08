@@ -113,11 +113,14 @@ renjinDBITest <- function (con) {
 	stopifnot(dbIsValid(con))
 	
 # remove test table
+    cat("Removing test table...\n")
 	if (dbExistsTable(con,tname)) dbRemoveTable(con,tname)
 	stopifnot(identical(dbExistsTable(con,tname),FALSE))
 	
 	
 # test basic handling
+    cat("Test basic handling...\n")
+
 	dbSendUpdate(con,"CREATE TABLE renjintest (a varchar(10),b integer,c varchar(100))")
 	stopifnot(identical(dbExistsTable(con,tname),TRUE))
 	dbSendUpdate(con,"INSERT INTO renjintest VALUES ('one',1,'1111')")
@@ -128,29 +131,39 @@ renjinDBITest <- function (con) {
 	stopifnot(identical(dbExistsTable(con,tname),FALSE))
 	
 # write test table iris
+
+    cat("Write test table iris...\n")
+
 	
 	dbWriteTable(con,tname,iris)
-	
+    cat("Table written...\n")
+
 	stopifnot(identical(dbExistsTable(con,tname),TRUE))
 	stopifnot(identical(dbExistsTable(con,"monetdbtest2"),FALSE))
 	# we have no way of knowing whether the table name was uppercased or not.
 	stopifnot(tolower(tname) %in% tolower(dbListTables(con)))
-		
+    cat("dbListFields......\n")
+
 	stopifnot(identical(tolower(dbListFields(con,tname)),c("sepal_length","sepal_width",
 							"petal_length","petal_width","species")))
 # get stuff, first very convenient
+    cat("dbReadTable......\n")
+
 	iris2 <- dbReadTable(con,tname)
 	stopifnot(identical(dim(iris), dim(iris2)))
 	
 # then manually
+    cat("dbSendQuery......\n")
+
 	res <- dbSendQuery(con,"SELECT species, sepal_width FROM renjintest")
 	stopifnot(dbIsValid(res))
-	stopifnot(identical(res$success,TRUE))
-	
+	stopifnot(identical(res@success,TRUE))
+
 	stopifnot(tolower(dbColumnInfo(res)[[1,1]]) == "species")
 	stopifnot(tolower(dbColumnInfo(res)[[2,1]]) == "sepal_width")
 # cannot get row count, JDBC does not export it
 # stopifnot(dbGetInfo(res)$row.count == 150 && res@env$info$rows == 150)
+    cat("dbFetch......\n")
 
 	data <- dbFetch(res, 10)
 	

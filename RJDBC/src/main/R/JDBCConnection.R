@@ -5,8 +5,10 @@
 
 setClass("JDBCConnection", representation("DBIConnection", ptr="externalptr", identifier.quote="character"))
 
-setMethod("dbDisconnect", "JDBCConnection", def=function(conn, ...)
-          {conn@jc$close(); TRUE})
+setMethod("dbDisconnect", "JDBCConnection", def=function(conn, ...) {
+    conn@ptr$close();
+    TRUE
+})
 
 .fillStatementParameters <- function(s, l) {
   for (i in 1:length(l)) {
@@ -42,7 +44,8 @@ setMethod("dbSendUpdate",  signature(conn="JDBCConnection", statement="character
     stmt <- conn@ptr$createStatement()
     res <-  stmt$execute(statement)
 
-	invisible(TRUE)
+    new("JDBCResult", statement = stmt, success = res)
+
 })
 
 setMethod("dbGetQuery", signature(conn="JDBCConnection", statement="character"),
@@ -92,22 +95,15 @@ setMethod("dbExistsTable", "JDBCConnection", def=function(conn, name, ...) {
 			tolower(dbListTables(conn))
 })
 
-setMethod("dbRemoveTable", "JDBCConnection", def=function(conn, name, ...)
-    dbSendUpdate(conn, paste("DROP TABLE", name))==0
-)
+setMethod("dbRemoveTable", "JDBCConnection", def=function(conn, name, ...) {
+    dbSendUpdate(conn, paste("DROP TABLE", name))
+    invisible(TRUE)
+})
 
 setMethod("dbListFields", "JDBCConnection", def=function(conn, name, pattern="%", full=FALSE, ...) {
-  md <- .jcall(conn@jc, "Ljava/sql/DatabaseMetaData;", "getMetaData", check=FALSE)
-  .verify.JDBC.result(md, "Unable to retrieve JDBC database metadata")
-  r <- .jcall(md, "Ljava/sql/ResultSet;", "getColumns", .jnull("java/lang/String"),
-              .jnull("java/lang/String"), name, pattern, check=FALSE)
-  .verify.JDBC.result(r, "Unable to retrieve JDBC columns list for ",name)
-  on.exit(.jcall(r, "V", "close"))
-  ts <- character()
-  while (.jcall(r, "Z", "next"))
-    ts <- c(ts, .jcall(r, "S", "getString", "COLUMN_NAME"))
-  .jcall(r, "V", "close")
-  ts
+  	if (!dbExistsTable(conn, name))
+  		stop("Unknown table ", name);
+  	JDBCUtils$getColumns(conn@ptr, name)
 })
 
 if (is.null(getGeneric("dbGetFields"))) setGeneric("dbGetFields", function(conn, ...) standardGeneric("dbGetFields"))
@@ -121,9 +117,6 @@ setMethod("dbGetFields", "JDBCConnection", def=function(conn, name, pattern="%",
   on.exit(.jcall(r, "V", "close"))
   .fetch.result(r)
 })
-
-setMethod("dbReadTable", "JDBCConnection", def=function(conn, name, ...)
-          dbGetQuery(conn, paste("SELECT * FROM",.sql.qescape(name,TRUE,conn@identifier.quote))))
 
 setMethod("dbDataType", signature(dbObj="JDBCConnection", obj = "ANY"),
           def = function(dbObj, obj, ...) {

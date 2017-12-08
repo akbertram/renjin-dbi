@@ -46,8 +46,8 @@ test_that("forbidden operations throw errors", {
   on.exit(unlink(tmpFile))
 
   ## error if file does not exist
-  expect_error(dbConnect(SQLite(), tmpFile, flags = SQLITE_RO), "unable to open")
-  expect_error(dbConnect(SQLite(), tmpFile, flags = SQLITE_RW), "unable to open")
+  expect_error(dbConnect(SQLite(), tmpFile, flags = SQLITE_RO), "[Uu]nable to open")
+  expect_error(dbConnect(SQLite(), tmpFile, flags = SQLITE_RW), "[Uu]nable to open")
 
   dbrw <- dbConnect(SQLite(), tmpFile, flags = SQLITE_RWC)
   df <- data.frame(a=letters, b=runif(26L), stringsAsFactors=FALSE)

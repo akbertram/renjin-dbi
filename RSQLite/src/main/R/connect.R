@@ -120,8 +120,11 @@ setMethod("dbConnect", "SQLiteDriver",
     vfs <- check_vfs(vfs)
     stopifnot(is.integer(flags), length(flags) == 1)
 
+    props <- import(java.util.Properties)$new()
+    props$setProperty("open_mode", flags)
+
     con <- new("SQLiteConnection",
-      ptr = drv@ptr$connect(paste0("jdbc:sqlite:", dbname), import(java.util.Properties)$new()),
+      ptr = drv@ptr$connect(paste0("jdbc:sqlite:", dbname), props),
       dbname = dbname,
       flags = flags,
       vfs = vfs,
@@ -191,12 +194,4 @@ setMethod("dbConnect", "SQLiteConnection", function(drv, ...){
 
   dbConnect(SQLite(), drv@dbname, vfs = drv@vfs, flags = drv@flags,
     loadable.extensions = drv@loadable.extensions)
-})
-
-
-#' @export
-#' @rdname SQLite
-setMethod("dbDisconnect", "SQLiteConnection", function(conn, ...) {
-  rsqlite_disconnect(conn@ptr)
-  invisible(TRUE)
 })

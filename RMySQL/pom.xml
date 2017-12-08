@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.renjin.cran</groupId>
-			<artifactId>DBI</artifactId>
+			<artifactId>RJDBC</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

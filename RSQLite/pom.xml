@@ -16,11 +16,11 @@
     <description>RSQLite connects SQLite and Renjin via a DBI-like interface</description>
 
     <dependencies>
-		<dependency>
-		    <groupId>org.renjin.cran</groupId>
-		    <artifactId>RJDBC</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
+    <dependency>
+      <groupId>org.renjin.cran</groupId>
+      <artifactId>RJDBC</artifactId>
+      <version>${project.version}</version>
+    </dependency>
  		<dependency>
         <groupId>org.xerial</groupId>
         <artifactId>sqlite-jdbc</artifactId>

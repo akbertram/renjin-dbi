@@ -3,7 +3,7 @@
 ## Adapted from RJDBC by Simon Urbanek
 
 
-setClass("JDBCResult", representation("DBIResult", statement="externalptr", resultset="externalptr"))
+setClass("JDBCResult", representation("DBIResult", statement="externalptr", resultset="externalptr", success="logical"))
 
 setMethod("fetch", signature(res="JDBCResult", n="numeric"), def=function(res, n, block=2048L, ...) {
  	JDBCUtils$fetch(res@resultset, n)
@@ -32,3 +32,7 @@ setMethod("dbColumnInfo", "JDBCResult", def = function(res, ...) {
   as.data.frame(l, row.names=1:cols)
 },
           valueClass = "data.frame")
+
+setMethod("dbIsValid", "JDBCResult", def = function(dbObj, ...) {
+    TRUE
+})
