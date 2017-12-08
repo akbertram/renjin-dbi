@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <renjin.version>0.9.0-SNAPSHOT</renjin.version>
+        <renjin.version>0.8.2534</renjin.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
@@ -59,11 +59,11 @@
         <module>RJDBC</module>
         <!--<module>MonetDB.R</module>-->
         <!--<module>RPostgreSQL</module>-->
-        <!--<module>RMySQL</module>-->
+        <module>RMySQL</module>
         <module>RSQLite</module>
         <!--<module>ROracle</module>-->
         <!--<module>RH2</module>-->
-        <!--<module>RH2GIS</module>-->
+        <!--<module>RH2GIS</modugit le>-->
     </modules>
 
     <repositories>
