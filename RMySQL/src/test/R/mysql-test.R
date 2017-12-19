@@ -1,7 +1,15 @@
 library(hamcrest)
 library(RMySQL)
+library(DBI)
 
-test.driver <- function() {
-	con <- dbConnect(RMySQL(), url="jdbc:mysql://localhost:3306/renjintest", username="renjintest", password="renjintest")
-	renjinDBITest(con)
-}
+
+  con <- dbConnect(MySQL(), dbname = "test", username="root", password="root")
+
+  expected <- data.frame(
+    a = c(1:3, NA),
+    b = c("x", "y", "z", "E"),
+    stringsAsFactors = FALSE
+  )
+
+  dbWriteTable(con, "dat", "dat-n.bin", sep="|", eol="\n", overwrite = TRUE)
+  dbReadTable(con, "dat")
