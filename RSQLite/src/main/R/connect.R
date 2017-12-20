@@ -112,7 +112,14 @@ setMethod("dbConnect", "SQLiteDriver",
     stopifnot(length(dbname) == 1, !is.na(dbname))
 
     if (!is_url_or_special_filename(dbname)) {
-      dbname <- normalizePath(dbname, mustWork = FALSE)
+      if(file.exists(dbname)) {
+        # If we are referencing a resource in a Jar file or some other
+        # custom virtual file system, we need to ensure that the file is extracted
+        # to a "real" file that SQLite can access.
+        dbname <- local.file(dbname)
+      } else {
+        dbname <- normalizePath(dbname, mustWork = FALSE)
+      }
     }
 
     dbname <- enc2utf8(dbname)
