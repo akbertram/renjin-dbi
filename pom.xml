@@ -97,13 +97,13 @@
                             </goals>
                             <phase>compile</phase>
                         </execution>
-                        <!--execution>
+                        <execution>
                             <id>test</id>
                             <goals>
                                 <goal>test</goal>
                             </goals>
                             <phase>test</phase>
-                        </execution-->
+                        </execution>
                     </executions>
                     <configuration>
                         <defaultPackages>
