@@ -18,12 +18,23 @@
 		<dependency>
 			<groupId>org.renjin.cran</groupId>
 			<artifactId>DBI</artifactId>
-			<version>0.7-b4</version>
+			<version>1.0.0-b9</version>
 		</dependency>
 		<dependency>
 			<groupId>org.renjin</groupId>
 			<artifactId>gcc-runtime</artifactId>
 			<version>${renjin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.197</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -34,14 +45,18 @@
 				<groupId>org.renjin</groupId>
 				<artifactId>renjin-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>se.alipsa</groupId>
+				<artifactId>renjin-hamcrest-maven-plugin</artifactId>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>

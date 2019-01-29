@@ -13,7 +13,7 @@ public class DoubleColumnBuilder implements ColumnBuilder {
 
     public static boolean acceptsType(String columnType) {
       return columnType.equals("decimal") || columnType.equals("real") || columnType.equals("number")
-          || columnType.startsWith("double") || columnType.startsWith("float");
+          || columnType.startsWith("numeric") || columnType.startsWith("double") || columnType.startsWith("float");
     }
 
     @Override
