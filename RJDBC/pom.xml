@@ -18,7 +18,8 @@
 		<dependency>
 			<groupId>org.renjin.cran</groupId>
 			<artifactId>DBI</artifactId>
-			<version>1.0.0-b9</version>
+			<version>0.7-b4</version>
+			<!-- TODO: maybe upgrade to a later version e.g. 1.0.0-b9 -->
 		</dependency>
 		<dependency>
 			<groupId>org.renjin</groupId>
@@ -44,10 +45,6 @@
 			<plugin>
 				<groupId>org.renjin</groupId>
 				<artifactId>renjin-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>se.alipsa</groupId>
-				<artifactId>renjin-hamcrest-maven-plugin</artifactId>
 			</plugin>
 
 			<plugin>
