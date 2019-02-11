@@ -111,41 +111,6 @@
                         </defaultPackages>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>se.alipsa</groupId>
-                    <artifactId>renjin-hamcrest-maven-plugin</artifactId>
-                    <version>1.0-SNAPSHOT</version>
-                    <configuration>
-                        <testFailureIgnore>true</testFailureIgnore>
-                        <printSuccess>true</printSuccess>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>testR</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.renjin</groupId>
-                            <artifactId>renjin-script-engine</artifactId>
-                            <version>${renjin.version}</version>
-                            <exclusions>
-                                <exclusion>
-                                    <groupId>commons-logging</groupId>
-                                    <artifactId>commons-logging</artifactId>
-                                </exclusion>
-                            </exclusions>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.renjin</groupId>
-                            <artifactId>hamcrest</artifactId>
-                            <version>${renjin.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
