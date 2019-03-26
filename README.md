@@ -83,3 +83,8 @@ Note that you need to add the driver jar to the classpath in addition to RJDBC e
             <version>1.4.197</version>
         </dependency>
 ```
+
+# Building 
+Note:
+This does not build properly on Windows for some reason (classes are does not end correctly with RData,
+this is probably a bug in the renjin-maven-plugin)
