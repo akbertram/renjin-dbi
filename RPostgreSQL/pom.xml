@@ -5,9 +5,9 @@
 
 	<artifactId>RPostgreSQL</artifactId>
     <parent>
-        <groupId>org.renjin.cran</groupId>
-        <artifactId>dbiparent</artifactId>
-        <version>0.3.1-SNAPSHOT</version>
+			<groupId>org.renjin.cran</groupId>
+			<artifactId>dbiparent</artifactId>
+			<version>10.0.15-SNAPSHOT</version>
     </parent>
 	<packaging>jar</packaging>
 
