@@ -18,6 +18,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <renjin.version>0.9.2725</renjin.version>
+        <dbi.version>1.0.0-b9</dbi.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -35,6 +36,7 @@
             <groupId>org.renjin</groupId>
             <artifactId>renjin-script-engine</artifactId>
             <version>${renjin.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.renjin</groupId>
@@ -110,6 +112,13 @@
                             <defaultPackage>methods</defaultPackage>
                         </defaultPackages>
                     </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.renjin.cran</groupId>
+                            <artifactId>DBI</artifactId>
+                            <version>${dbi.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>se.alipsa</groupId>
@@ -143,6 +152,11 @@
                             <groupId>org.renjin</groupId>
                             <artifactId>hamcrest</artifactId>
                             <version>${renjin.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.renjin.cran</groupId>
+                            <artifactId>DBI</artifactId>
+                            <version>${dbi.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>

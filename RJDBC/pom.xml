@@ -11,14 +11,14 @@
 	<artifactId>RJDBC</artifactId>
 	<packaging>jar</packaging>
 
-	<name>DBI</name>
+	<name>RJDBC</name>
 	<description>Provides access to databases through the JDBC interface</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.renjin.cran</groupId>
 			<artifactId>DBI</artifactId>
-      <version>1.0.0-b9</version>
+      <version>${dbi.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
