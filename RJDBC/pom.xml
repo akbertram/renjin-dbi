@@ -19,6 +19,7 @@
 			<groupId>org.renjin.cran</groupId>
 			<artifactId>DBI</artifactId>
       <version>1.0.0-b9</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.renjin</groupId>
