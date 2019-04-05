@@ -4,7 +4,7 @@
 
     <groupId>org.renjin.cran</groupId>
     <artifactId>dbiparent</artifactId>
-    <version>10.0.15-SNAPSHOT</version>
+    <version>10.0.16-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>http://monetr.r-forge.r-project.org/</url>
