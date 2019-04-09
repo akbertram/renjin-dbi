@@ -181,6 +181,8 @@ public class JDBCUtils {
                 } else if (DateStringColumnBuilder.acceptsType(columnType)) {
                     builders.add(new DateStringColumnBuilder(ISODateTimeFormat.dateTime()));
 
+                } else if (BlobColumnBuilder.acceptsType(columnType)) {
+                    builders.add(new BlobColumnBuilder());
                 } else {
                     throw new EvalException("Unknown column type " + columnInfo);
                 }
