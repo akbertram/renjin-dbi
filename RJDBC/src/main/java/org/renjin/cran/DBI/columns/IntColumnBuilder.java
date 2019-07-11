@@ -12,7 +12,8 @@ public class IntColumnBuilder implements ColumnBuilder {
     private IntArrayVector.Builder vector = new IntArrayVector.Builder();
 
     public static boolean acceptsType(String columnType) {
-      return columnType.endsWith("int") || columnType.equals("wrd") || columnType.startsWith("int");
+      return (columnType.endsWith("int") || columnType.equals("wrd") || columnType.startsWith("int"))
+          && !columnType.equals("bigint") ;
     }
 
     @Override

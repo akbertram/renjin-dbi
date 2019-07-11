@@ -5,26 +5,40 @@
 	<parent>
 		<groupId>org.renjin.cran</groupId>
 		<artifactId>dbiparent</artifactId>
-		<version>0.3.1-SNAPSHOT</version>
+		<version>10.0.16-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>RJDBC</artifactId>
 	<packaging>jar</packaging>
 
-	<name>DBI</name>
+	<name>RJDBC</name>
 	<description>Provides access to databases through the JDBC interface</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.renjin.cran</groupId>
 			<artifactId>DBI</artifactId>
-			<version>0.7-b4</version>
+      <version>${dbi.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.renjin</groupId>
 			<artifactId>gcc-runtime</artifactId>
 			<version>${renjin.version}</version>
+			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.10.1</version>
+			<scope>provided</scope>
+		</dependency>
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>10.14.2.0</version>
+      <scope>test</scope>
+    </dependency>
 	</dependencies>
 
 	<build>
@@ -34,14 +48,18 @@
 				<groupId>org.renjin</groupId>
 				<artifactId>renjin-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>se.alipsa</groupId>
+				<artifactId>renjin-hamcrest-maven-plugin</artifactId>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>

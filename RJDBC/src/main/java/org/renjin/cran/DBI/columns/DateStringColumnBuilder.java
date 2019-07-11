@@ -8,6 +8,7 @@ import org.renjin.sexp.StringVector;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 /**
  * Constructs a character vector column from a date-time field in a ResultSet.
@@ -19,7 +20,8 @@ public class DateStringColumnBuilder implements ColumnBuilder {
     public DateTimeFormatter format;
 
     public static boolean acceptsType(String columnType) {
-        return columnType.equals("datetime");
+        return columnType.equals("datetime") || columnType.equals("timestamp")
+            || columnType.equals("datetime2");
     }
 
     public DateStringColumnBuilder(DateTimeFormatter format) {
@@ -28,7 +30,7 @@ public class DateStringColumnBuilder implements ColumnBuilder {
 
     @Override
     public void addValue(ResultSet rs, int columnIndex) throws SQLException {
-        Date date = rs.getDate(columnIndex);
+        Timestamp date = rs.getTimestamp(columnIndex);
         if(date == null) {
             vector.addNA();
         } else {

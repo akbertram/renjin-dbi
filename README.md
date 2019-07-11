@@ -57,3 +57,34 @@ dbSendQuery(con,"INSERT INTO VANNES VALUES('POLYGON ((100 300, 210 300, 210 200,
 #Run a spatial function
 df  <- dbGetQuery(con,"SELECT ST_AREA(the_geom) as area FROM VANNES")
 ```
+
+## Plain RJDBC
+```R
+library("DBI")
+library("RJDBC")
+drv <- JDBC("org.h2.Driver") 
+con <- dbConnect(drv, url="jdbc:h2:mem:test") 
+df  <- dbGetQuery(con, "SELECT * from sometable")
+dbDisconnect(con)
+
+```
+Note that you need to add the driver jar to the classpath in addition to RJDBC e.g.
+
+```
+        <dependency>
+            <groupId>org.renjin.cran</groupId>
+            <artifactId>RJDBC</artifactId>
+            <version>10.0.14</version>
+        </dependency>
+        <!-- the driver -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+        </dependency>
+```
+
+# Building 
+Note:
+This does not build properly on Windows for some reason (classes are does not end correctly with RData,
+this is probably a bug in the renjin-maven-plugin)
