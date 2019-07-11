@@ -27,7 +27,7 @@
         <repository>
             <id>renjin-packages</id>
             <name>Renjin CI Repository</name>
-            <url>http://nexus.bedatadriven.com/content/repositories/renjin-packages</url>
+            <url>https://nexus.bedatadriven.com/content/repositories/renjin-packages</url>
         </repository>
     </distributionManagement>
 
@@ -55,8 +55,8 @@
     <modules>
         <module>RJDBC</module>
         <!--<module>MonetDB.R</module>-->
-        <!--<module>RPostgreSQL</module>-->
-        <!--module>RMySQL</module-->
+        <module>RPostgreSQL</module>
+        <!--module>RMySQL</module-->	
         <module>RSQLite</module>
         <!--<module>ROracle</module>-->
         <!--<module>RH2</module>-->
@@ -67,7 +67,7 @@
         <repository>
             <id>bedatadriven</id>
             <name>bedatadriven public repo</name>
-            <url>http://nexus.bedatadriven.com/content/groups/public/</url>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
         </repository>
         
 		<repository>
@@ -80,7 +80,7 @@
         <pluginRepository>
             <id>bedatadriven</id>
             <name>bedatadriven public repo</name>
-            <url>http://nexus.bedatadriven.com/content/groups/public/</url>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
 
