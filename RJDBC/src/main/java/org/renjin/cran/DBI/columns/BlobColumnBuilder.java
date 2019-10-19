@@ -1,7 +1,6 @@
 package org.renjin.cran.DBI.columns;
 
 
-import org.renjin.primitives.io.serialization.StringByteArrayVector;
 import org.renjin.sexp.*;
 
 import java.sql.ResultSet;
@@ -10,8 +9,6 @@ import java.sql.SQLException;
 public class BlobColumnBuilder implements ColumnBuilder {
 
 
-    //private RawVector.Builder vector = new RawVector.Builder();
-    //private StringByteArrayVector.Builder vector = new StringByteArrayVector.Builder();
     private StringArrayVector.Builder vector = new StringArrayVector.Builder();
 
 

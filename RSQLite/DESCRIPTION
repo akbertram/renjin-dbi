@@ -1,0 +1,36 @@
+Package: RSQLite
+Title: 'SQLite' Interface for R
+Version: 2.1.2.9000
+Date: 2019-08-02
+Authors@R:
+    c(person(given = "Kirill",
+             family = "M\u00fcller",
+             role = c("aut", "cre"),
+             email = "krlmlr+r@mailbox.org",
+             comment = c(ORCID = "0000-0002-1416-3412")),
+      person(given = "Hadley",
+             family = "Wickham",
+             role = "aut"),
+      person(given = c("David", "A."),
+             family = "James",
+             role = "aut"),
+      person(given = "Seth",
+             family = "Falcon",
+             role = "aut"),
+      person(family = "SQLite Authors",
+             role = "ctb",
+             comment = "for the included SQLite sources"),
+      person(given = "Liam",
+             family = "Healy",
+             role = "ctb",
+             comment = "for the included SQLite sources"),
+      person(family = "R Consortium",
+             role = "fnd"),
+      person(family = "RStudio",
+             role = "cph"))
+Description: Embeds the 'SQLite' database engine in R and
+    provides an interface compliant with the 'DBI' package. The source for
+    the 'SQLite' engine is included.
+License: LGPL (>= 2.1)
+URL: https://github.com/r-dbi/RSQLite
+BugReports: https://github.com/r-dbi/RSQLite/issues

@@ -1,0 +1,32 @@
+
+
+buildscript {
+  dependencies {
+    classpath "org.renjin:renjin-gradle-plugin:+"
+  }
+}
+
+
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'org.renjin.java-package'
+
+  group = 'org.renjin.cran'
+
+
+  repositories {
+    maven {
+      url 'https://nexus.bedatadriven.com/content/groups/public'
+    }
+  }
+
+  renjin {
+    renjinVersion = '3.5-beta43'
+  }
+
+  dependencies {
+    compile 'org.renjin.cran:DBI:1.0.0-b9'
+    testRuntime 'org.renjin:hamcrest:3.5-beta43'
+  }
+}
+

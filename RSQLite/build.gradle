@@ -1,0 +1,11 @@
+
+
+dependencies {
+    compile project(':RJDBC')
+    compile 'org.xerial:sqlite-jdbc:3.8.7'
+
+    testRuntime 'org.renjin.cran:testthat:+'
+    testRuntime 'org.renjin.cran:xml2:+'
+}
+
+testNamespace.onlyIf { false }

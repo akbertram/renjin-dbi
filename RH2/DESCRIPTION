@@ -1,0 +1,8 @@
+Package: RH2
+Version: 10.0.16
+Date: 2019-10-21
+Title: DBI/RJDBC Interface to H2 Database
+Author: G. Grothendieck. Author of h2 is Thomas Mueller.
+Description: DBI/RJDBC interface to h2 database.
+Depends: methods, RJDBC, rJava
+License: Mozilla Public License 1.1

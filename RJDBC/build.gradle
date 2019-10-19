@@ -1,0 +1,8 @@
+
+
+dependencies {
+    compile 'org.renjin.cran:rJava:0.9-8-renjin-17'
+    compile 'joda-time:joda-time:2.10.1'
+
+    testRuntime 'org.apache.derby:derby:10.14.2.0'
+}

@@ -1,0 +1,5 @@
+Package: RPostgreSQL
+Version: 10.0.16
+Date: 2019-10-21
+Title: R Interface to the 'PostgreSQL' Database System
+Description: JDBC-based replacement for the RPostgreSQL package
