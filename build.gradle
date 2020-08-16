@@ -15,6 +15,7 @@ subprojects {
 
 
   repositories {
+    mavenCentral()
     maven {
       url 'https://nexus.bedatadriven.com/content/groups/public'
     }
