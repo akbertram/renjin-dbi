@@ -1,20 +1,16 @@
 package org.renjin.cran.DBI;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.joda.time.format.ISODateTimeFormat;
 import org.renjin.cran.DBI.columns.*;
 import org.renjin.eval.EvalException;
-import org.renjin.primitives.vector.RowNamesVector;
+import org.renjin.primitives.sequence.IntSequence;
+import org.renjin.primitives.vector.ConvertingStringVector;
 import org.renjin.sexp.ListVector;
 import org.renjin.sexp.StringVector;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -203,7 +199,9 @@ public class JDBCUtils {
                 ListVector ci = (ListVector) columnVector.get(i);
                 dataFrame.add(ci.get("name").asString(), builders.get(i).build());
             }
-            dataFrame.setAttribute("row.names", new RowNamesVector((int) rows));
+            dataFrame.setAttribute("row.names",
+              new ConvertingStringVector(IntSequence.fromTo(1, rows)));
+
             dataFrame.setAttribute("class", StringVector.valueOf("data.frame"));
             return dataFrame.build();
 
